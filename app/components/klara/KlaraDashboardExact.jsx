@@ -49,12 +49,13 @@ export default function KlaraDashboardExact() {
       <div
         style={{
           width: "240px",
-          background: "var(--bg-sidebar)",
-          borderRight: "1px solid var(--border-primary)",
+          background: "#0f1419",
+          borderRight: "1px solid #1f2937",
           display: "flex",
           flexDirection: "column",
           padding: "20px 16px",
           overflowY: "auto",
+          height: "100vh",
         }}
       >
         {/* Logo */}
@@ -112,29 +113,36 @@ export default function KlaraDashboardExact() {
           }}
         />
 
+        {/* Spacer to push menu items down */}
+        <div style={{ flex: 1 }} />
+
         {/* TODAY Section */}
-        <div style={{ marginBottom: "24px" }}>
+        <div style={{ marginBottom: "20px" }}>
           <div
             style={{
-              fontSize: "var(--font-xxs)",
-              fontWeight: "var(--weight-semibold)",
-              color: "var(--text-muted)",
+              fontSize: "11px",
+              fontWeight: "600",
+              color: "#6b7280",
               textTransform: "uppercase",
               letterSpacing: "0.5px",
               marginBottom: "12px",
+              paddingLeft: "4px",
             }}
           >
             TODAY
           </div>
           <div
             style={{
-              padding: "9px 12px",
-              borderRadius: "var(--radius-sm)",
-              fontSize: "var(--font-sm)",
-              color: "var(--text-secondary)",
+              padding: "10px 12px",
+              borderRadius: "6px",
+              fontSize: "13px",
+              color: "#d1d5db",
               cursor: "pointer",
-              background: "var(--bg-card-secondary)",
+              background: "#1f2937",
+              transition: "background 0.2s",
             }}
+            onMouseEnter={(e) => (e.target.style.background = "#374151")}
+            onMouseLeave={(e) => (e.target.style.background = "#1f2937")}
           >
             🔍 Store Audit - Jan 10
           </div>
@@ -144,35 +152,63 @@ export default function KlaraDashboardExact() {
         <div style={{ marginBottom: "24px" }}>
           <div
             style={{
-              fontSize: "var(--font-xxs)",
-              fontWeight: "var(--weight-semibold)",
-              color: "var(--text-muted)",
+              fontSize: "11px",
+              fontWeight: "600",
+              color: "#6b7280",
               textTransform: "uppercase",
               letterSpacing: "0.5px",
               marginBottom: "12px",
+              paddingLeft: "4px",
             }}
           >
             PREVIOUS
           </div>
           <div
             style={{
-              padding: "9px 12px",
-              borderRadius: "var(--radius-sm)",
-              fontSize: "var(--font-sm)",
-              color: "var(--text-secondary)",
+              padding: "10px 12px",
+              borderRadius: "6px",
+              fontSize: "13px",
+              color: "#d1d5db",
               cursor: "pointer",
+              background: "#1f2937",
+              transition: "background 0.2s",
             }}
+            onMouseEnter={(e) => (e.target.style.background = "#374151")}
+            onMouseLeave={(e) => (e.target.style.background = "#1f2937")}
           >
             🔍 Store Audit - Jan 10
           </div>
         </div>
 
-        {/* Footer */}
-        <div style={{ marginTop: "auto", paddingTop: "20px", borderTop: "1px solid var(--border-primary)" }}>
-          <div style={{ fontSize: "var(--font-sm)", color: "var(--text-secondary)", cursor: "pointer", marginBottom: "12px" }}>
+        {/* Footer - Settings & Help */}
+        <div style={{ paddingTop: "16px", borderTop: "1px solid #374151", marginTop: "auto" }}>
+          <div
+            style={{
+              padding: "10px 12px",
+              fontSize: "13px",
+              color: "#d1d5db",
+              cursor: "pointer",
+              borderRadius: "6px",
+              transition: "background 0.2s",
+              marginBottom: "8px",
+            }}
+            onMouseEnter={(e) => (e.target.style.background = "#1f2937")}
+            onMouseLeave={(e) => (e.target.style.background = "transparent")}
+          >
             ⚙️ Settings
           </div>
-          <div style={{ fontSize: "var(--font-sm)", color: "var(--text-secondary)", cursor: "pointer" }}>
+          <div
+            style={{
+              padding: "10px 12px",
+              fontSize: "13px",
+              color: "#d1d5db",
+              cursor: "pointer",
+              borderRadius: "6px",
+              transition: "background 0.2s",
+            }}
+            onMouseEnter={(e) => (e.target.style.background = "#1f2937")}
+            onMouseLeave={(e) => (e.target.style.background = "transparent")}
+          >
             ❓ Help
           </div>
         </div>
