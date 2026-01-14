@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "../../../app/styles/klara.css";
+import "../../styles/klara.css";
 
 export default function KlaraDashboardExact() {
   const [scanning, setScanning] = useState(false);
