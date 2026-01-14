@@ -1,6 +1,6 @@
 import styles from "./AgentThinking.module.css";
 
-export function AgentThinking({ message }) {
+export default function AgentThinking({ message }) {
   return (
     <div className={styles.thinking}>
       <div className={styles.thinkingBubble}>
@@ -13,4 +13,4 @@ export function AgentThinking({ message }) {
   );
 }
 
-export default AgentThinking;
+

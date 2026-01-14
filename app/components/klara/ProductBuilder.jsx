@@ -2,7 +2,7 @@ import { Card, Button, TextField, Select, InlineStack, BlockStack, Text } from "
 import { useState } from "react";
 import styles from "./ProductBuilder.module.css";
 
-export function ProductBuilder({ onClose, onBuild }) {
+export default function ProductBuilder({ onClose, onBuild }) {
   const [products, setProducts] = useState([
     {
       id: 1,
@@ -128,4 +128,4 @@ export function ProductBuilder({ onClose, onBuild }) {
   );
 }
 
-export default ProductBuilder;
+

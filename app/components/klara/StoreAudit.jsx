@@ -2,7 +2,7 @@ import { Card, Button, Badge, Text, InlineStack, BlockStack, ProgressBar } from 
 import { useState, useEffect } from "react";
 import styles from "./StoreAudit.module.css";
 
-export function StoreAudit({ onClose }) {
+export default function StoreAudit({ onClose }) {
   const [auditData, setAuditData] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -132,4 +132,4 @@ export function StoreAudit({ onClose }) {
   );
 }
 
-export default StoreAudit;
+

@@ -2,7 +2,7 @@ import { Card, Button, TextField, Select, InlineStack, BlockStack, Text, ColorPi
 import { useState } from "react";
 import styles from "./ThemeEditor.module.css";
 
-export function ThemeEditor({ onClose, onSave }) {
+export default function ThemeEditor({ onClose, onSave }) {
   const [settings, setSettings] = useState({
     primaryColor: "#22d3ee",
     secondaryColor: "#0891b2",
@@ -165,4 +165,4 @@ export function ThemeEditor({ onClose, onSave }) {
   );
 }
 
-export default ThemeEditor;
+

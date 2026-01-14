@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import styles from "./ScanVisualization.module.css";
 
-export function ScanVisualization({ progress, isScanning }) {
+export default function ScanVisualization({ progress, isScanning }) {
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -119,4 +119,4 @@ export function ScanVisualization({ progress, isScanning }) {
   );
 }
 
-export default ScanVisualization;
+

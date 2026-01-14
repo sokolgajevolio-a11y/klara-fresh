@@ -7,7 +7,7 @@ import FairyDustEffect from "./FairyDustEffect";
 import CensusStats from "./CensusStats";
 import styles from "./Dashboard360.module.css";
 
-export function Dashboard360() {
+export default function Dashboard360() {
   const navigate = useNavigate();
   const [scanning, setScanning] = useState(false);
   const [scanProgress, setScanProgress] = useState(0);
@@ -361,4 +361,3 @@ export function Dashboard360() {
   );
 }
 
-export default Dashboard360;

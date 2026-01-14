@@ -1,7 +1,7 @@
 import { InlineStack, Text } from "@shopify/polaris";
 import styles from "./CensusStats.module.css";
 
-export function CensusStats() {
+export default function CensusStats() {
   const stats = [
     {
       id: 1,
@@ -60,4 +60,4 @@ export function CensusStats() {
   );
 }
 
-export default CensusStats;
+

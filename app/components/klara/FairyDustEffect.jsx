@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import styles from "./FairyDustEffect.module.css";
 
-export function FairyDustEffect({ active }) {
+export default function FairyDustEffect({ active }) {
   const containerRef = useRef(null);
 
   useEffect(() => {
@@ -40,4 +40,4 @@ export function FairyDustEffect({ active }) {
   return <div ref={containerRef} className={styles.fairyDustEffect} />;
 }
 
-export default FairyDustEffect;
+
