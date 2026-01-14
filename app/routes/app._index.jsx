@@ -1,5 +1,5 @@
 import { authenticate } from "../shopify.server";
-import { Dashboard360 } from "../components/klara/Dashboard360";
+import KlaraDashboardExact from "../components/klara/KlaraDashboardExact";
 
 export const loader = async ({ request }) => {
   await authenticate.admin(request);
@@ -7,5 +7,5 @@ export const loader = async ({ request }) => {
 };
 
 export default function Home() {
-  return <Dashboard360 />;
+  return <KlaraDashboardExact />;
 }

@@ -1,0 +1,117 @@
+/* Klara AI - Exact Design System */
+
+:root {
+  /* Backgrounds */
+  --bg-primary: #0a0e1a;
+  --bg-secondary: #0f1419;
+  --bg-sidebar: #121826;
+  --bg-card: #151d2b;
+  --bg-card-secondary: #1a2332;
+
+  /* Borders */
+  --border-primary: #1e2638;
+  --border-secondary: #242f42;
+
+  /* Text Colors */
+  --text-primary: #ffffff;
+  --text-secondary: #d1d9e6;
+  --text-tertiary: #6b7a94;
+  --text-muted: #4a5568;
+
+  /* Brand Colors */
+  --blue-gradient-start: #4f7fff;
+  --blue-gradient-end: #2d5ceb;
+  --cyan-accent: #06b6d4;
+  --green-success: #10b981;
+  --blue-ring: rgba(79, 127, 255, 0.6);
+
+  /* Font Sizes */
+  --font-xxl: 48px;
+  --font-xl: 36px;
+  --font-lg: 20px;
+  --font-md: 18px;
+  --font-base: 14px;
+  --font-sm: 13px;
+  --font-xs: 12px;
+  --font-xxs: 11px;
+  --font-xxxs: 10px;
+
+  /* Font Weights */
+  --weight-normal: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* Line Heights */
+  --leading-tight: 1.1;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.6;
+
+  /* Border Radius */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 10px;
+  --radius-xl: 12px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: var(--font-base);
+  font-weight: var(--weight-normal);
+  line-height: var(--leading-normal);
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+/* Animations */
+@keyframes sphereFloat {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(2deg); }
+}
+
+@keyframes ringRotate {
+  from { transform: translate(-50%, -50%) rotateX(75deg) rotateZ(0deg); }
+  to { transform: translate(-50%, -50%) rotateX(75deg) rotateZ(360deg); }
+}
+
+@keyframes particleFloat {
+  0%, 100% { transform: translateY(0px); opacity: 0.6; }
+  50% { transform: translateY(-20px); opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-secondary);
+}
