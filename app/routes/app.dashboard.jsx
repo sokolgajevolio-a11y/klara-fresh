@@ -1,5 +1,5 @@
-import KlaraDashboardExact from "../components/klara/KlaraDashboardExact";
+import KlaraDashboardEnhanced from "../components/klara/KlaraDashboardEnhanced";
 
 export default function DashboardRoute() {
-  return <KlaraDashboardExact />;
+  return <KlaraDashboardEnhanced />;
 }
