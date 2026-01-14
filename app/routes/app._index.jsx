@@ -1,11 +1,9 @@
-import { authenticate } from "../shopify.server";
-import KlaraDashboardExact from "../components/klara/KlaraDashboardExact";
+import { redirect } from "@remix-run/node";
 
-export const loader = async ({ request }) => {
-  await authenticate.admin(request);
-  return {};
-};
+export function loader() {
+  return redirect("/app/dashboard");
+}
 
-export default function Home() {
-  return <KlaraDashboardExact />;
+export default function AppIndex() {
+  return null;
 }
