@@ -113,23 +113,9 @@ export default function KlaraDashboardExact() {
           }}
         />
 
-        {/* FEATURES Section */}
+        {/* MAIN MENU */}
         <div style={{ marginBottom: "32px" }}>
-          <div
-            style={{
-              fontSize: "11px",
-              fontWeight: "600",
-              color: "#6b7280",
-              textTransform: "uppercase",
-              letterSpacing: "0.5px",
-              marginBottom: "12px",
-              paddingLeft: "4px",
-            }}
-          >
-            FEATURES
-          </div>
-          
-          {/* Build Products */}
+          {/* Dashboard */}
           <div
             style={{
               padding: "10px 12px",
@@ -144,10 +130,10 @@ export default function KlaraDashboardExact() {
             onMouseEnter={(e) => (e.target.style.background = "#1f2937")}
             onMouseLeave={(e) => (e.target.style.background = "transparent")}
           >
-            Build Products
+            Dashboard
           </div>
           
-          {/* Edit Theme */}
+          {/* Issues */}
           <div
             style={{
               padding: "10px 12px",
@@ -162,10 +148,10 @@ export default function KlaraDashboardExact() {
             onMouseEnter={(e) => (e.target.style.background = "#1f2937")}
             onMouseLeave={(e) => (e.target.style.background = "transparent")}
           >
-            Edit Theme
+            Issues
           </div>
           
-          {/* Audit Store */}
+          {/* Fixed */}
           <div
             style={{
               padding: "10px 12px",
@@ -180,10 +166,10 @@ export default function KlaraDashboardExact() {
             onMouseEnter={(e) => (e.target.style.background = "#1f2937")}
             onMouseLeave={(e) => (e.target.style.background = "transparent")}
           >
-            Audit Store
+            Fixed
           </div>
           
-          {/* View Analytics */}
+          {/* Reports */}
           <div
             style={{
               padding: "10px 12px",
@@ -198,10 +184,10 @@ export default function KlaraDashboardExact() {
             onMouseEnter={(e) => (e.target.style.background = "#1f2937")}
             onMouseLeave={(e) => (e.target.style.background = "transparent")}
           >
-            View Analytics
+            Reports
           </div>
           
-          {/* History & Safety */}
+          {/* Settings */}
           <div
             style={{
               padding: "10px 12px",
@@ -215,14 +201,14 @@ export default function KlaraDashboardExact() {
             onMouseEnter={(e) => (e.target.style.background = "#1f2937")}
             onMouseLeave={(e) => (e.target.style.background = "transparent")}
           >
-            History & Safety
+            Settings
           </div>
         </div>
 
         {/* Spacer */}
         <div style={{ flex: 1 }} />
 
-        {/* Footer - Settings & Help */}
+        {/* Footer - Help & Account */}
         <div style={{ paddingTop: "16px", borderTop: "1px solid #374151" }}>
           <div
             style={{
@@ -237,7 +223,7 @@ export default function KlaraDashboardExact() {
             onMouseEnter={(e) => (e.target.style.background = "#1f2937")}
             onMouseLeave={(e) => (e.target.style.background = "transparent")}
           >
-            ⚙️ Settings
+            Help
           </div>
           <div
             style={{
@@ -251,7 +237,7 @@ export default function KlaraDashboardExact() {
             onMouseEnter={(e) => (e.target.style.background = "#1f2937")}
             onMouseLeave={(e) => (e.target.style.background = "transparent")}
           >
-            ❓ Help
+            Account
           </div>
         </div>
       </div>
@@ -276,40 +262,37 @@ export default function KlaraDashboardExact() {
           <button style={{ width: "36px", height: "36px", background: "var(--bg-card-secondary)", border: "1px solid var(--border-secondary)", borderRadius: "var(--radius-sm)", cursor: "pointer" }}>
             ⚙️
           </button>
-          <button style={{ width: "36px", height: "36px", background: "var(--bg-card-secondary)", border: "1px solid var(--border-secondary)", borderRadius: "var(--radius-sm)", cursor: "pointer" }}>
-            🔧
-          </button>
-          <div style={{ marginLeft: "auto", padding: "8px 16px", background: "var(--bg-card-secondary)", border: "1px solid var(--border-secondary)", borderRadius: "var(--radius-sm)", fontSize: "var(--font-sm)" }}>
+          <div style={{ marginLeft: "auto", padding: "8px 16px", background: "var(--bg-card-secondary)", border: "1px solid var(--border-secondary)", borderRadius: "var(--radius-sm)", fontSize: "13px", color: "var(--text-secondary)" }}>
             3-AMep Verw ▼
           </div>
         </div>
 
-        {/* Title and Breadcrumb */}
-        <h1 style={{ fontSize: "var(--font-xxl)", fontWeight: "var(--weight-bold)", marginBottom: "8px", lineHeight: "var(--leading-tight)" }}>
+        {/* Title & Breadcrumb */}
+        <h1 style={{ fontSize: "48px", fontWeight: "700", color: "white", marginBottom: "8px" }}>
           360 Store Scan
         </h1>
-        <div style={{ fontSize: "var(--font-base)", color: "var(--text-tertiary)", marginBottom: "40px" }}>
-          Product · Shopify Store · Deperator Store · Meerators
-        </div>
+        <p style={{ fontSize: "14px", color: "#6b7a94", marginBottom: "40px" }}>
+          Product • Shopify Store • Deperator Store • Meerators
+        </p>
 
         {/* Progress Section */}
-        <div style={{ marginBottom: "40px" }}>
-          <div style={{ fontSize: "var(--font-lg)", fontWeight: "var(--weight-semibold)", marginBottom: "12px" }}>
+        <div style={{ marginBottom: "32px" }}>
+          <div style={{ fontSize: "20px", fontWeight: "600", color: "white", marginBottom: "12px" }}>
             {scanProgress.toFixed(0)}% Complete
           </div>
-          <div style={{ width: "60%", height: "4px", background: "var(--border-secondary)", borderRadius: "2px", overflow: "hidden" }}>
+          <div style={{ width: "60%", height: "4px", background: "#1a2332", borderRadius: "2px", overflow: "hidden" }}>
             <div
               style={{
                 height: "100%",
-                background: "linear-gradient(90deg, var(--blue-gradient-start), var(--cyan-accent))",
                 width: `${scanProgress}%`,
+                background: "linear-gradient(90deg, #4f7fff, #06b6d4)",
                 transition: "width 0.3s ease",
               }}
             />
           </div>
         </div>
 
-        {/* Stats Grid + Sphere Container */}
+        {/* Stats Grid + Sphere */}
         <div style={{ display: "flex", gap: "32px", marginBottom: "48px", position: "relative" }}>
           {/* Stats Grid */}
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px", maxWidth: "580px" }}>
@@ -322,29 +305,23 @@ export default function KlaraDashboardExact() {
               <div
                 key={idx}
                 style={{
-                  background: "var(--bg-card)",
-                  border: "1px solid var(--border-primary)",
-                  borderRadius: "var(--radius-xl)",
+                  background: "#151d2b",
+                  border: "1px solid #1e2638",
+                  borderRadius: "12px",
                   padding: "20px",
                   cursor: "pointer",
-                  transition: "transform 0.2s, box-shadow 0.2s",
+                  transition: "transform 0.2s",
                 }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = "translateY(-2px)";
-                  e.currentTarget.style.boxShadow = "0 8px 24px rgba(79, 127, 255, 0.2)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = "translateY(0)";
-                  e.currentTarget.style.boxShadow = "none";
-                }}
+                onMouseEnter={(e) => (e.currentTarget.style.transform = "translateY(-2px)")}
+                onMouseLeave={(e) => (e.currentTarget.style.transform = "translateY(0)")}
               >
-                <div style={{ fontSize: "var(--font-sm)", fontWeight: "var(--weight-semibold)", marginBottom: "12px", color: "var(--text-secondary)" }}>
+                <div style={{ fontSize: "15px", fontWeight: "600", color: "#d1d9e6", marginBottom: "12px" }}>
                   {stat.title}
                 </div>
-                <div style={{ fontSize: "var(--font-xl)", fontWeight: "var(--weight-bold)", color: "var(--cyan-accent)", marginBottom: "4px" }}>
+                <div style={{ fontSize: "36px", fontWeight: "700", color: "#06b6d4", marginBottom: "8px" }}>
                   {stat.number}
                 </div>
-                <div style={{ fontSize: "var(--font-xxs)", color: "var(--text-tertiary)" }}>
+                <div style={{ fontSize: "12px", color: "#6b7a94" }}>
                   {stat.label}
                 </div>
               </div>
@@ -367,64 +344,42 @@ export default function KlaraDashboardExact() {
           >
             <div
               style={{
-                position: "relative",
                 width: "280px",
                 height: "280px",
-                background: "radial-gradient(circle at 35% 35%, #5b8fff, #1e4db8, #0a1e4a)",
                 borderRadius: "50%",
-                boxShadow: `
-                  0 0 80px rgba(79, 127, 255, 0.6),
-                  0 0 120px rgba(79, 127, 255, 0.4),
-                  inset -30px -30px 60px rgba(0, 0, 0, 0.3),
-                  inset 30px 30px 60px rgba(123, 165, 255, 0.2)
-                `,
+                background: "radial-gradient(circle at 35% 35%, #5b8fff, #1e4db8, #0a1e4a)",
+                boxShadow: "0 0 80px rgba(79, 127, 255, 0.6), 0 0 120px rgba(79, 127, 255, 0.4), inset -30px -30px 60px rgba(0, 0, 0, 0.3), inset 30px 30px 60px rgba(123, 165, 255, 0.2)",
                 animation: "sphereFloat 6s ease-in-out infinite",
+                position: "relative",
               }}
             >
-              {/* Ring 1 */}
+              {/* Rings */}
               <div
                 style={{
                   position: "absolute",
-                  top: "50%",
-                  left: "50%",
-                  transform: "translate(-50%, -50%)",
                   width: "340px",
                   height: "100px",
                   border: "2px solid rgba(79, 127, 255, 0.6)",
                   borderRadius: "50%",
-                  animation: "ringRotate 12s linear infinite",
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%) rotateX(75deg)",
+                  animation: "ringRotate 10s linear infinite",
                 }}
               />
-              {/* Ring 2 */}
               <div
                 style={{
                   position: "absolute",
-                  top: "50%",
-                  left: "50%",
-                  transform: "translate(-50%, -50%) rotateZ(45deg)",
                   width: "300px",
                   height: "90px",
                   border: "2px solid rgba(79, 127, 255, 0.4)",
                   borderRadius: "50%",
-                  animation: "ringRotate 10s linear infinite reverse",
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%) rotateX(75deg) rotateZ(45deg)",
+                  animation: "ringRotate 12s linear infinite reverse",
                 }}
               />
-              {/* Particles */}
-              {[0, 1, 2, 3, 4, 5].map((i) => (
-                <div
-                  key={i}
-                  style={{
-                    position: "absolute",
-                    width: "6px",
-                    height: "6px",
-                    background: "rgba(79, 127, 255, 0.8)",
-                    borderRadius: "50%",
-                    top: `${30 + Math.sin(i) * 40}%`,
-                    left: `${30 + Math.cos(i) * 40}%`,
-                    animation: `particleFloat ${2 + i * 0.3}s ease-in-out infinite`,
-                  }}
-                />
-              ))}
             </div>
 
             {/* Completion Badge */}
@@ -434,11 +389,12 @@ export default function KlaraDashboardExact() {
                 bottom: "10px",
                 right: "-20px",
                 background: "rgba(15, 20, 25, 0.95)",
-                border: "1px solid var(--border-primary)",
+                border: "1px solid #1e2638",
                 padding: "8px 16px",
-                borderRadius: "var(--radius-md)",
-                fontSize: "var(--font-sm)",
-                fontWeight: "var(--weight-semibold)",
+                borderRadius: "8px",
+                fontSize: "13px",
+                fontWeight: "600",
+                color: "#06b6d4",
               }}
             >
               5% Complete
@@ -447,33 +403,24 @@ export default function KlaraDashboardExact() {
         </div>
 
         {/* Before and After Section */}
-        <div
-          style={{
-            background: "var(--bg-card)",
-            border: "1px solid var(--border-primary)",
-            borderRadius: "var(--radius-xl)",
-            padding: "24px",
-          }}
-        >
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "24px" }}>
-            <h2 style={{ fontSize: "var(--font-md)", fontWeight: "var(--weight-semibold)" }}>
-              Before and After
-            </h2>
-            <div style={{ fontSize: "var(--font-sm)", color: "var(--text-tertiary)" }}>
-              True differentiations store snippets of the ge committer
-            </div>
-          </div>
+        <div style={{ background: "#151d2b", border: "1px solid #1e2638", borderRadius: "12px", padding: "24px" }}>
+          <h3 style={{ fontSize: "18px", fontWeight: "600", color: "white", marginBottom: "8px" }}>
+            Before and After
+          </h3>
+          <p style={{ fontSize: "14px", color: "#6b7a94", marginBottom: "24px" }}>
+            True differentiations store snippets of the ge committer
+          </p>
 
           {/* Image Grid */}
           <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "12px", marginBottom: "24px" }}>
-            {[1, 2, 3, 4].map((i) => (
+            {[1, 2, 3, 4].map((idx) => (
               <div
-                key={i}
+                key={idx}
                 style={{
                   aspectRatio: "3/4",
-                  background: "var(--bg-card-secondary)",
-                  border: "1px solid var(--border-secondary)",
-                  borderRadius: "var(--radius-lg)",
+                  background: "#1a2332",
+                  border: "1px solid #242f42",
+                  borderRadius: "10px",
                   position: "relative",
                   overflow: "hidden",
                   cursor: "pointer",
@@ -490,18 +437,15 @@ export default function KlaraDashboardExact() {
                     padding: "12px",
                   }}
                 >
-                  <div style={{ fontSize: "var(--font-xxxs)", fontFamily: "Courier New", color: "var(--text-secondary)", marginBottom: "8px" }}>
+                  <div style={{ fontSize: "10px", color: "#9ca3af", fontFamily: "Courier New", marginBottom: "8px" }}>
                     GE 00 0161 23309 10
                   </div>
-                  <div style={{ fontSize: "var(--font-xxxs)", fontFamily: "Courier New", color: "var(--text-tertiary)" }}>
-                    On snooze Esnoose
-                  </div>
-                  <div style={{ display: "flex", gap: "6px", marginTop: "8px" }}>
-                    <span style={{ fontSize: "var(--font-xxxs)", background: "rgba(79, 127, 255, 0.15)", border: "1px solid rgba(79, 127, 255, 0.3)", padding: "2px 6px", borderRadius: "3px" }}>
-                      Stermitios
+                  <div style={{ display: "flex", gap: "8px" }}>
+                    <span style={{ fontSize: "10px", padding: "4px 8px", background: "rgba(79, 127, 255, 0.15)", border: "1px solid rgba(79, 127, 255, 0.3)", borderRadius: "4px", color: "#06b6d4" }}>
+                      Stermilios
                     </span>
-                    <span style={{ fontSize: "var(--font-xxxs)", background: "rgba(79, 127, 255, 0.15)", border: "1px solid rgba(79, 127, 255, 0.3)", padding: "2px 6px", borderRadius: "3px" }}>
-                      Revieus
+                    <span style={{ fontSize: "10px", padding: "4px 8px", background: "rgba(79, 127, 255, 0.15)", border: "1px solid rgba(79, 127, 255, 0.3)", borderRadius: "4px", color: "#06b6d4" }}>
+                      Revie
                     </span>
                   </div>
                 </div>
@@ -509,33 +453,39 @@ export default function KlaraDashboardExact() {
             ))}
           </div>
 
-          {/* Buttons */}
+          {/* Action Buttons */}
           <div style={{ display: "flex", gap: "12px" }}>
             <button
               style={{
-                background: "linear-gradient(135deg, var(--blue-gradient-start), var(--blue-gradient-end))",
-                border: "none",
-                borderRadius: "var(--radius-md)",
-                color: "white",
                 padding: "11px 28px",
-                fontSize: "var(--font-base)",
-                fontWeight: "var(--weight-semibold)",
+                background: "linear-gradient(135deg, #4f7fff, #2d5ceb)",
+                border: "none",
+                borderRadius: "8px",
+                color: "white",
+                fontSize: "14px",
+                fontWeight: "600",
                 cursor: "pointer",
+                transition: "brightness 0.2s",
               }}
+              onMouseEnter={(e) => (e.target.style.brightness = "1.1")}
+              onMouseLeave={(e) => (e.target.style.brightness = "1")}
             >
               Apply Fix
             </button>
             <button
               style={{
-                background: "transparent",
-                border: "1px solid var(--border-secondary)",
-                borderRadius: "var(--radius-md)",
-                color: "var(--text-secondary)",
                 padding: "11px 28px",
-                fontSize: "var(--font-base)",
-                fontWeight: "var(--weight-semibold)",
+                background: "transparent",
+                border: "1px solid #242f42",
+                borderRadius: "8px",
+                color: "#d1d9e6",
+                fontSize: "14px",
+                fontWeight: "600",
                 cursor: "pointer",
+                transition: "background 0.2s",
               }}
+              onMouseEnter={(e) => (e.target.style.background = "#1a2332")}
+              onMouseLeave={(e) => (e.target.style.background = "transparent")}
             >
               Preview All Changes
             </button>
@@ -547,8 +497,8 @@ export default function KlaraDashboardExact() {
       <div
         style={{
           width: "340px",
-          background: "var(--bg-sidebar)",
-          borderLeft: "1px solid var(--border-primary)",
+          background: "#121826",
+          borderLeft: "1px solid #1e2638",
           display: "flex",
           flexDirection: "column",
           padding: "20px",
@@ -558,50 +508,56 @@ export default function KlaraDashboardExact() {
         {/* Context Badge */}
         <div
           style={{
-            background: "var(--bg-card-secondary)",
-            border: "1px solid var(--border-secondary)",
+            background: "#1a2332",
+            border: "1px solid #242f42",
             padding: "10px 14px",
-            borderRadius: "var(--radius-md)",
-            fontSize: "var(--font-xs)",
-            marginBottom: "20px",
-            display: "flex",
-            alignItems: "center",
-            gap: "8px",
+            borderRadius: "8px",
+            fontSize: "12px",
+            color: "#d1d9e6",
+            marginBottom: "24px",
+            textAlign: "center",
           }}
         >
-          <span style={{ width: "8px", height: "8px", background: "var(--blue-gradient-start)", borderRadius: "50%" }} />
-          Store Rieactions is Escrptios
+          Store Reactions is Escriptios
         </div>
 
         {/* Chat Messages */}
-        <div style={{ flex: 1, overflowY: "auto", marginBottom: "20px", display: "flex", flexDirection: "column", gap: "12px" }}>
+        <div style={{ flex: 1, marginBottom: "24px", overflowY: "auto" }}>
           {messages.map((msg) => (
-            <div key={msg.id} style={{ display: "flex", gap: "8px" }}>
+            <div key={msg.id} style={{ marginBottom: "16px" }}>
               <div
                 style={{
-                  width: "24px",
-                  height: "24px",
-                  background: "linear-gradient(135deg, var(--blue-gradient-start), var(--blue-gradient-end))",
-                  borderRadius: "50%",
-                  flexShrink: 0,
+                  display: "flex",
+                  gap: "12px",
+                  alignItems: "flex-start",
                 }}
-              />
-              <div style={{ flex: 1 }}>
-                <div style={{ fontSize: "var(--font-sm)", fontWeight: "var(--weight-semibold)", marginBottom: "4px" }}>
-                  Klara
-                </div>
+              >
                 <div
                   style={{
-                    background: "var(--bg-card-secondary)",
-                    border: "1px solid var(--border-secondary)",
-                    borderRadius: "var(--radius-lg)",
-                    padding: "14px",
-                    fontSize: "var(--font-xs)",
-                    color: "var(--text-secondary)",
-                    lineHeight: "var(--leading-relaxed)",
+                    width: "24px",
+                    height: "24px",
+                    borderRadius: "50%",
+                    background: "linear-gradient(135deg, #4f7fff, #2d5ceb)",
+                    flexShrink: 0,
                   }}
-                >
-                  {msg.text}
+                />
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontSize: "13px", fontWeight: "600", color: "white", marginBottom: "4px" }}>
+                    Klara
+                  </div>
+                  <div
+                    style={{
+                      background: "#1a2332",
+                      border: "1px solid #242f42",
+                      borderRadius: "10px",
+                      padding: "14px",
+                      fontSize: "12px",
+                      color: "#d1d9e6",
+                      lineHeight: "1.5",
+                    }}
+                  >
+                    {msg.text}
+                  </div>
                 </div>
               </div>
             </div>
@@ -609,8 +565,17 @@ export default function KlaraDashboardExact() {
         </div>
 
         {/* Stats Panel */}
-        <div style={{ marginBottom: "20px", paddingBottom: "20px", borderBottom: "1px solid var(--border-primary)" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "14px" }}>
+        <div style={{ marginBottom: "24px", paddingBottom: "24px", borderBottom: "1px solid #1e2638" }}>
+          <div style={{ fontSize: "12px", fontWeight: "600", color: "#6b7a94", marginBottom: "16px" }}>
+            Census/Stats
+          </div>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              gap: "14px",
+            }}
+          >
             {[
               { value: "87/100", label: "Store Health" },
               { value: "2847", label: "Products" },
@@ -618,10 +583,10 @@ export default function KlaraDashboardExact() {
               { value: "72%", label: "Image Quality" },
             ].map((stat, idx) => (
               <div key={idx}>
-                <div style={{ fontSize: "22px", fontWeight: "var(--weight-bold)", color: "var(--text-primary)", marginBottom: "4px" }}>
+                <div style={{ fontSize: "22px", fontWeight: "700", color: "#06b6d4", marginBottom: "4px" }}>
                   {stat.value}
                 </div>
-                <div style={{ fontSize: "var(--font-xxs)", color: "var(--text-tertiary)", textTransform: "uppercase" }}>
+                <div style={{ fontSize: "11px", color: "#6b7a94", textTransform: "uppercase" }}>
                   {stat.label}
                 </div>
               </div>
@@ -630,17 +595,17 @@ export default function KlaraDashboardExact() {
           <div
             style={{
               height: "6px",
-              background: "var(--border-secondary)",
+              background: "#1a2332",
               borderRadius: "3px",
-              marginTop: "12px",
+              marginTop: "16px",
               overflow: "hidden",
             }}
           >
             <div
               style={{
                 height: "100%",
-                background: "linear-gradient(90deg, var(--green-success), var(--blue-gradient-start))",
-                width: "75%",
+                width: "87%",
+                background: "linear-gradient(90deg, #10b981, #4f7fff)",
               }}
             />
           </div>
@@ -656,30 +621,45 @@ export default function KlaraDashboardExact() {
             onKeyPress={(e) => e.key === "Enter" && handleSendMessage()}
             style={{
               flex: 1,
-              background: "var(--bg-card-secondary)",
-              border: "1px solid var(--border-secondary)",
-              borderRadius: "var(--radius-md)",
-              color: "var(--text-secondary)",
+              background: "#1a2332",
+              border: "1px solid #242f42",
+              borderRadius: "8px",
               padding: "12px",
-              fontSize: "var(--font-sm)",
+              fontSize: "13px",
+              color: "#d1d9e6",
             }}
           />
           <button
             onClick={handleSendMessage}
             style={{
-              background: "linear-gradient(135deg, var(--blue-gradient-start), var(--blue-gradient-end))",
+              width: "36px",
+              height: "36px",
+              background: "linear-gradient(135deg, #4f7fff, #2d5ceb)",
               border: "none",
-              borderRadius: "var(--radius-md)",
+              borderRadius: "8px",
               color: "white",
-              padding: "12px 16px",
               cursor: "pointer",
-              fontWeight: "var(--weight-semibold)",
+              fontSize: "16px",
+              transition: "brightness 0.2s",
             }}
+            onMouseEnter={(e) => (e.target.style.brightness = "1.1")}
+            onMouseLeave={(e) => (e.target.style.brightness = "1")}
           >
             ↑
           </button>
         </div>
       </div>
+
+      <style>{`
+        @keyframes sphereFloat {
+          0%, 100% { transform: translateY(0px) rotate(0deg); }
+          50% { transform: translateY(-15px) rotate(2deg); }
+        }
+        @keyframes ringRotate {
+          from { transform: translate(-50%, -50%) rotateX(75deg) rotateZ(0deg); }
+          to { transform: translate(-50%, -50%) rotateX(75deg) rotateZ(360deg); }
+        }
+      `}</style>
     </div>
   );
 }
