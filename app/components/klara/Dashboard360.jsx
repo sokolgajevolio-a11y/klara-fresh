@@ -1,22 +1,18 @@
-import { Page, Card, Button, Badge, Text, Spinner, InlineStack, BlockStack } from "@shopify/polaris";
+import { Page, Card, Button, Badge, Text, InlineStack, BlockStack, Layout } from "@shopify/polaris";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router";
 import ScanVisualization from "./ScanVisualization";
 import AgentThinking from "./AgentThinking";
-import FairyDustEffect from "./FairyDustEffect";
 import CensusStats from "./CensusStats";
-import styles from "./Dashboard360.module.css";
 
 export default function Dashboard360() {
-  const navigate = useNavigate();
   const [scanning, setScanning] = useState(false);
   const [scanProgress, setScanProgress] = useState(0);
   const [scanComplete, setScanComplete] = useState(false);
   const [messages, setMessages] = useState([
     {
       id: 1,
-      sender: "klara",
-      text: "Hi! I'm Klara, your AI Shopify Store Operator. I can scan your entire store for issues, build new products, edit your theme, and help you optimize everything. What would you like me to do?",
+      sender: "assistant",
+      content: "Hi! I'm Klara, your AI Shopify Store Operator. I can scan your entire store for issues. What would you like me to do?",
     },
   ]);
   const [inputValue, setInputValue] = useState("");
@@ -28,11 +24,9 @@ export default function Dashboard360() {
       title: "Product Images",
       icon: "🖼️",
       issues: 13,
-      issuesLabel: "issues",
       details: [
         { severity: "critical", text: "13 products missing alt text" },
         { severity: "warning", text: "8 images below 1000px width" },
-        { severity: "info", text: "5 images need optimization" },
       ],
     },
     {
@@ -40,11 +34,9 @@ export default function Dashboard360() {
       title: "Descriptions",
       icon: "✍️",
       issues: 8,
-      issuesLabel: "issues",
       details: [
         { severity: "critical", text: "8 products with duplicate descriptions" },
         { severity: "warning", text: "12 descriptions under 50 characters" },
-        { severity: "info", text: "3 descriptions missing keywords" },
       ],
     },
     {
@@ -52,11 +44,9 @@ export default function Dashboard360() {
       title: "SEO Metadata",
       icon: "🔗",
       issues: 6,
-      issuesLabel: "issues",
       details: [
         { severity: "critical", text: "6 products missing meta descriptions" },
         { severity: "warning", text: "4 titles over 60 characters" },
-        { severity: "info", text: "2 missing canonical tags" },
       ],
     },
     {
@@ -64,7 +54,6 @@ export default function Dashboard360() {
       title: "Store Structure",
       icon: "📊",
       issues: 3,
-      issuesLabel: "issues",
       details: [
         { severity: "warning", text: "3 collections with no products" },
         { severity: "info", text: "Navigation menu needs reorganization" },
@@ -99,14 +88,13 @@ export default function Dashboard360() {
       {
         id: Date.now(),
         sender: "user",
-        text: "Scan my store for issues",
+        content: "Scan my store",
       },
       {
         id: Date.now() + 1,
-        sender: "klara",
-        text: "Starting comprehensive store scan...",
+        sender: "assistant",
+        content: "Starting comprehensive store scan...",
         isThinking: true,
-        action: "scanning",
       },
     ]);
   };
@@ -117,158 +105,103 @@ export default function Dashboard360() {
     const userMessage = {
       id: Date.now(),
       sender: "user",
-      text: inputValue,
+      content: inputValue,
     };
 
     setMessages([...messages, userMessage]);
     setInputValue("");
 
-    // Simulate agent thinking
     setTimeout(() => {
       setMessages((prev) => [
         ...prev,
         {
           id: Date.now() + 1,
-          sender: "klara",
-          text: "Processing your request...",
-          isThinking: true,
+          sender: "assistant",
+          content: "I've analyzed your request. Would you like me to fix the product images first?",
         },
       ]);
-    }, 300);
-
-    // Simulate agent response
-    setTimeout(() => {
-      const response =
-        "I've analyzed your request. Would you like me to fix the product images first, or focus on SEO metadata?";
-      setMessages((prev) => {
-        const updated = [...prev];
-        updated[updated.length - 1] = {
-          id: updated[updated.length - 1].id,
-          sender: "klara",
-          text: response,
-        };
-        return updated;
-      });
-    }, 2500);
+    }, 1500);
   };
 
-  const handleApplyFix = (categoryId) => {
-    const category = scanCategories.find((c) => c.id === categoryId);
-    if (!category) return;
-
-    setMessages([
-      ...messages,
-      {
-        id: Date.now(),
-        sender: "user",
-        text: `Fix all ${category.title} issues`,
-      },
-      {
-        id: Date.now() + 1,
-        sender: "klara",
-        text: `Fixing ${category.issues} ${category.title.toLowerCase()} issues...`,
-        isThinking: true,
-        action: "fixing",
-      },
-    ]);
-
-    setTimeout(() => {
-      setMessages((prev) => [
-        ...prev,
-        {
-          id: Date.now(),
-          sender: "klara",
-          text: `✓ Successfully fixed all ${category.issues} ${category.title.toLowerCase()} issues. Your store is now optimized!`,
-        },
-      ]);
-    }, 3000);
-  };
-
-  const getSeverityColor = (severity) => {
-    switch (severity) {
-      case "critical":
-        return "text-red-400";
-      case "warning":
-        return "text-yellow-400";
-      case "info":
-        return "text-blue-400";
-      default:
-        return "text-gray-400";
-    }
-  };
-
-  const getSeverityIcon = (severity) => {
-    switch (severity) {
-      case "critical":
-        return "🔴";
-      case "warning":
-        return "🟡";
-      case "info":
-        return "🔵";
-      default:
-        return "⚪";
-    }
+  const getSeverityBadge = (severity) => {
+    const badgeConfig = {
+      critical: { status: "critical", children: "Critical" },
+      warning: { status: "warning", children: "Warning" },
+      info: { status: "info", children: "Info" },
+    };
+    return badgeConfig[severity] || badgeConfig.info;
   };
 
   return (
     <Page title="360 Store Scan" fullWidth>
-      <div className={styles.dashboard360}>
-        {/* Fairy Dust Effect */}
-        {scanning && <FairyDustEffect active={scanning} />}
+      <Layout>
+        {/* Main Content Section */}
+        <Layout.Section>
+          <BlockStack gap="400">
+            {/* Progress Bar */}
+            {scanning && (
+              <Card>
+                <BlockStack gap="200">
+                  <Text variant="bodyMd" fontWeight="semibold">
+                    Scanning: {scanProgress.toFixed(0)}% Complete
+                  </Text>
+                  <div style={{
+                    width: "100%",
+                    height: "8px",
+                    background: "#e5e7eb",
+                    borderRadius: "4px",
+                    overflow: "hidden",
+                  }}>
+                    <div style={{
+                      width: `${scanProgress}%`,
+                      height: "100%",
+                      background: "#22d3ee",
+                      transition: "width 0.3s ease",
+                    }} />
+                  </div>
+                </BlockStack>
+              </Card>
+            )}
 
-        {/* Main Content - Two Column Layout */}
-        <div className={styles.mainContent}>
-          {/* Left Column - Categories and Before/After */}
-          <div className={styles.leftColumn}>
-            {/* Progress */}
-            <div className={styles.progressSection}>
-              <div className={styles.progressLabel}>
-                {scanProgress.toFixed(0)}% Complete
-              </div>
-              <div className={styles.progressBar}>
-                <div
-                  className={styles.progressFill}
-                  style={{ width: `${scanProgress}%` }}
-                />
-              </div>
-            </div>
-
-            {/* Category Cards Grid - 4 columns */}
-            <div className={styles.categoryGrid}>
+            {/* Category Cards Grid */}
+            <div style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+              gap: "16px",
+            }}>
               {scanCategories.map((category) => (
-                <Card key={category.id} sectioned>
-                  <div className={styles.categoryCard}>
-                    <div className={styles.categoryHeader}>
-                      <h3 className={styles.categoryTitle}>{category.title}</h3>
-                      <span className={styles.categoryIcon}>{category.icon}</span>
-                    </div>
-                    <div className={styles.categoryIssues}>
-                      <div className={styles.issueCount}>{category.issues}</div>
-                      <div className={styles.issueLabel}>{category.issuesLabel}</div>
+                <Card key={category.id}>
+                  <BlockStack gap="300">
+                    <InlineStack blockAlign="center" gap="200">
+                      <Text variant="headingMd" as="h3">
+                        {category.icon} {category.title}
+                      </Text>
+                    </InlineStack>
+
+                    <div style={{
+                      fontSize: "32px",
+                      fontWeight: "bold",
+                      color: "#22d3ee",
+                    }}>
+                      {category.issues}
                     </div>
 
-                    {/* Expandable Details */}
+                    <Text variant="bodySm" tone="subdued">
+                      issues found
+                    </Text>
+
                     {expandedCategory === category.id && (
-                      <div className={styles.categoryDetails}>
+                      <BlockStack gap="200">
                         {category.details.map((detail, idx) => (
-                          <div
-                            key={idx}
-                            className={`${styles.detailItem} ${getSeverityColor(
-                              detail.severity
-                            )}`}
-                          >
-                            <span>{getSeverityIcon(detail.severity)}</span>
-                            <span>{detail.text}</span>
-                          </div>
+                          <InlineStack key={idx} gap="200" blockAlign="start">
+                            <Badge {...getSeverityBadge(detail.severity)} />
+                            <Text variant="bodySm">{detail.text}</Text>
+                          </InlineStack>
                         ))}
-                        <Button
-                          onClick={() => handleApplyFix(category.id)}
-                          primary
-                          fullWidth
-                        >
+                        <Button primary fullWidth>
                           Fix These Issues
                         </Button>
-                      </div>
+                      </BlockStack>
                     )}
 
                     <Button
@@ -282,82 +215,94 @@ export default function Dashboard360() {
                     >
                       {expandedCategory === category.id ? "Hide" : "View"} Details
                     </Button>
-                  </div>
+                  </BlockStack>
                 </Card>
               ))}
             </div>
 
-            {/* Action Buttons */}
-            {scanComplete && (
-              <div className={styles.actionButtons}>
-                <Button primary onClick={handleStartScan}>
-                  Apply All Fixes
-                </Button>
-                <Button onClick={() => navigate("/app/visuals")}>
-                  Preview All Changes
-                </Button>
+            {/* Scan Visualization */}
+            <Card>
+              <div style={{ display: "flex", justifyContent: "center", padding: "40px 0" }}>
+                <ScanVisualization progress={scanProgress} isScanning={scanning} />
               </div>
-            )}
-          </div>
+            </Card>
 
-          {/* Right Column - Scan Visualization */}
-          <div className={styles.rightColumn}>
-            <ScanVisualization progress={scanProgress} isScanning={scanning} />
-          </div>
-        </div>
-
-        {/* New Scan Button */}
-        <div className={styles.scanButtonContainer}>
-          <Button
-            onClick={handleStartScan}
-            disabled={scanning}
-            primary
-            size="large"
-          >
-            {scanning ? "Scanning..." : "Start New Scan"}
-          </Button>
-        </div>
-
-        {/* Chat Section */}
-        <Card title="Agent Chat" sectioned>
-          <div className={styles.chatContainer}>
-            <div className={styles.messages}>
-              {messages.map((msg) => (
-                <div
-                  key={msg.id}
-                  className={`${styles.message} ${styles[msg.sender]}`}
-                >
-                  {msg.isThinking ? (
-                    <AgentThinking message={msg.text} />
-                  ) : (
-                    <div className={styles.messageContent}>{msg.text}</div>
-                  )}
-                </div>
-              ))}
-            </div>
-
-            <div className={styles.inputContainer}>
-              <input
-                type="text"
-                placeholder="Message Klara..."
-                value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
-                onKeyPress={(e) => e.key === "Enter" && handleSendMessage()}
-                className={styles.input}
-              />
-              <Button onClick={handleSendMessage} primary>
-                Send
+            {/* Scan Button */}
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <Button
+                onClick={handleStartScan}
+                disabled={scanning}
+                primary
+                size="large"
+              >
+                {scanning ? "Scanning..." : "Start New Scan"}
               </Button>
             </div>
 
-            {/* Census/Stats */}
-            <div className={styles.stats}>
-              <CensusStats />
-            </div>
-          </div>
-        </Card>
-      </div>
+            {/* Chat Section */}
+            <Card title="Chat with Klara">
+              <BlockStack gap="300">
+                {/* Messages */}
+                <div style={{
+                  maxHeight: "300px",
+                  overflowY: "auto",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "12px",
+                  padding: "12px 0",
+                }}>
+                  {messages.map((msg) => (
+                    <div key={msg.id} style={{
+                      display: "flex",
+                      justifyContent: msg.sender === "user" ? "flex-end" : "flex-start",
+                    }}>
+                      <div style={{
+                        maxWidth: "70%",
+                        padding: "12px",
+                        borderRadius: "8px",
+                        background: msg.sender === "user" ? "#0891b2" : "#e5e7eb",
+                        color: msg.sender === "user" ? "#fff" : "#000",
+                      }}>
+                        {msg.isThinking ? (
+                          <AgentThinking message={msg.content} />
+                        ) : (
+                          <Text variant="bodySm">{msg.content}</Text>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Input */}
+                <InlineStack gap="200">
+                  <input
+                    type="text"
+                    placeholder="Message Klara..."
+                    value={inputValue}
+                    onChange={(e) => setInputValue(e.target.value)}
+                    onKeyPress={(e) => e.key === "Enter" && handleSendMessage()}
+                    style={{
+                      flex: 1,
+                      padding: "10px",
+                      border: "1px solid #d1d5db",
+                      borderRadius: "6px",
+                      fontSize: "14px",
+                    }}
+                  />
+                  <Button onClick={handleSendMessage} primary>
+                    Send
+                  </Button>
+                </InlineStack>
+
+                {/* Stats */}
+                <div style={{ marginTop: "20px", paddingTop: "20px", borderTop: "1px solid #e5e7eb" }}>
+                  <CensusStats />
+                </div>
+              </BlockStack>
+            </Card>
+          </BlockStack>
+        </Layout.Section>
+      </Layout>
     </Page>
   );
 }
-
