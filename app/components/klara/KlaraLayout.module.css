@@ -1,0 +1,133 @@
+.klaraLayout {
+  display: flex;
+  height: 100vh;
+  background: #000;
+  color: #fff;
+}
+
+.sidebar {
+  width: 320px;
+  background: #0a0a0a;
+  border-right: 1px solid #1a1a1a;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.sidebarHeader {
+  padding: 16px;
+  border-bottom: 1px solid #1a1a1a;
+}
+
+.taskList {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.navigation {
+  padding: 12px;
+  border-bottom: 1px solid #1a1a1a;
+}
+
+.navItem {
+  padding: 10px 12px;
+  margin-bottom: 4px;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #999;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.navItem:hover {
+  background: #1a1a1a;
+  color: #fff;
+}
+
+.navItemActive {
+  background: #1a1a1a;
+  color: #fff;
+  font-weight: 500;
+}
+
+.tasks {
+  padding: 16px;
+}
+
+.sectionTitle {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #666;
+  margin-bottom: 12px;
+}
+
+.task {
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+  border: 1px solid transparent;
+}
+
+.task:hover {
+  background: #111;
+}
+
+.taskActive {
+  background: #0f0f0f;
+  border-color: #222;
+}
+
+.taskTitle {
+  font-size: 13px;
+  color: #ddd;
+  margin-bottom: 4px;
+}
+
+.taskStatus {
+  font-size: 11px;
+  color: #888;
+}
+
+.context {
+  padding: 12px 16px;
+  border-top: 1px solid #1a1a1a;
+  border-bottom: 1px solid #1a1a1a;
+}
+
+.contextLabel {
+  font-size: 10px;
+  text-transform: uppercase;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.contextValue {
+  font-size: 12px;
+  color: #aaa;
+}
+
+.conversation {
+  padding: 16px;
+  border-bottom: 1px solid #1a1a1a;
+  min-height: 100px;
+}
+
+.message {
+  font-size: 12px;
+  color: #999;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.inputArea {
+  padding: 16px;
+}
+
+.mainPanel {
+  flex: 1;
+  overflow-y: auto;
+  background: #000;
+}

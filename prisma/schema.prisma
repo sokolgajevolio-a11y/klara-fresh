@@ -1,0 +1,89 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Session {
+  id                   String    @id
+  shop                 String
+  state                String
+  isOnline             Boolean   @default(false)
+  scope                String?
+  expires              DateTime?
+  accessToken          String
+  userId               BigInt?
+  firstName            String?
+  lastName             String?
+  email                String?
+  accountOwner         Boolean   @default(false)
+  locale               String?
+  collaborator         Boolean?  @default(false)
+  emailVerified        Boolean?  @default(false)
+  refreshToken         String?
+  refreshTokenExpires  DateTime?
+}
+
+model Task {
+  id        String   @id @default(cuid())
+  shop      String
+  intent    String
+  status    String   @default("pending")
+  metadata  String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([shop, status])
+}
+
+model Issue {
+  id            String       @id @default(cuid())
+  shop          String
+  entityType    String
+  entityId      String
+  productTitle  String?
+  issueType     String
+  category      String?
+  status        String       @default("open")
+  title         String?
+  explanation   String?
+  proposedFix   String?
+  type          String?
+  resourceId    String?
+  resourceTitle String?
+  canAutoFix    Boolean      @default(false)
+  severity      String       @default("medium")
+  resolvedAt    DateTime?
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+  fixes         FixHistory[]
+
+  @@unique([shop, entityId, issueType])
+  @@index([shop, status])
+  @@index([shop, canAutoFix])
+  @@index([shop, category])
+}
+
+model FixHistory {
+  id             String   @id @default(cuid())
+  shop           String
+  issueId        String
+  issue          Issue    @relation(fields: [issueId], references: [id])
+  entityId       String?
+  productTitle   String?
+  issueType      String
+  action         String
+  description    String?
+  beforeSnapshot String?
+  afterSnapshot  String?
+  success        Boolean  @default(true)
+  undone         Boolean  @default(false)
+  errorMessage   String?
+  createdAt      DateTime @default(now())
+
+  @@index([issueId])
+  @@index([shop, createdAt])
+}
