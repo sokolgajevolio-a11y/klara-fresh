@@ -137,14 +137,14 @@ export default function KlaraDashboardExact() {
               fontSize: "13px",
               color: "#d1d5db",
               cursor: "pointer",
-              background: "#1f2937",
+              background: "transparent",
               transition: "background 0.2s",
               marginBottom: "8px",
             }}
-            onMouseEnter={(e) => (e.target.style.background = "#374151")}
-            onMouseLeave={(e) => (e.target.style.background = "#1f2937")}
+            onMouseEnter={(e) => (e.target.style.background = "#1f2937")}
+            onMouseLeave={(e) => (e.target.style.background = "transparent")}
           >
-            📦 Build Products
+            Build Products
           </div>
           
           {/* Edit Theme */}
@@ -155,14 +155,14 @@ export default function KlaraDashboardExact() {
               fontSize: "13px",
               color: "#d1d5db",
               cursor: "pointer",
-              background: "#1f2937",
+              background: "transparent",
               transition: "background 0.2s",
               marginBottom: "8px",
             }}
-            onMouseEnter={(e) => (e.target.style.background = "#374151")}
-            onMouseLeave={(e) => (e.target.style.background = "#1f2937")}
+            onMouseEnter={(e) => (e.target.style.background = "#1f2937")}
+            onMouseLeave={(e) => (e.target.style.background = "transparent")}
           >
-            🎨 Edit Theme
+            Edit Theme
           </div>
           
           {/* Audit Store */}
@@ -173,14 +173,14 @@ export default function KlaraDashboardExact() {
               fontSize: "13px",
               color: "#d1d5db",
               cursor: "pointer",
-              background: "#1f2937",
+              background: "transparent",
               transition: "background 0.2s",
               marginBottom: "8px",
             }}
-            onMouseEnter={(e) => (e.target.style.background = "#374151")}
-            onMouseLeave={(e) => (e.target.style.background = "#1f2937")}
+            onMouseEnter={(e) => (e.target.style.background = "#1f2937")}
+            onMouseLeave={(e) => (e.target.style.background = "transparent")}
           >
-            🔍 Audit Store
+            Audit Store
           </div>
           
           {/* View Analytics */}
@@ -191,14 +191,14 @@ export default function KlaraDashboardExact() {
               fontSize: "13px",
               color: "#d1d5db",
               cursor: "pointer",
-              background: "#1f2937",
+              background: "transparent",
               transition: "background 0.2s",
               marginBottom: "8px",
             }}
-            onMouseEnter={(e) => (e.target.style.background = "#374151")}
-            onMouseLeave={(e) => (e.target.style.background = "#1f2937")}
+            onMouseEnter={(e) => (e.target.style.background = "#1f2937")}
+            onMouseLeave={(e) => (e.target.style.background = "transparent")}
           >
-            📊 View Analytics
+            View Analytics
           </div>
           
           {/* History & Safety */}
@@ -209,13 +209,13 @@ export default function KlaraDashboardExact() {
               fontSize: "13px",
               color: "#d1d5db",
               cursor: "pointer",
-              background: "#1f2937",
+              background: "transparent",
               transition: "background 0.2s",
             }}
-            onMouseEnter={(e) => (e.target.style.background = "#374151")}
-            onMouseLeave={(e) => (e.target.style.background = "#1f2937")}
+            onMouseEnter={(e) => (e.target.style.background = "#1f2937")}
+            onMouseLeave={(e) => (e.target.style.background = "transparent")}
           >
-            ⏮️ History & Safety
+            History & Safety
           </div>
         </div>
 
