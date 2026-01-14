@@ -113,75 +113,117 @@ export default function KlaraDashboardExact() {
           }}
         />
 
-        {/* Spacer to push menu items down */}
+        {/* FEATURES Section */}
+        <div style={{ marginBottom: "32px" }}>
+          <div
+            style={{
+              fontSize: "11px",
+              fontWeight: "600",
+              color: "#6b7280",
+              textTransform: "uppercase",
+              letterSpacing: "0.5px",
+              marginBottom: "12px",
+              paddingLeft: "4px",
+            }}
+          >
+            FEATURES
+          </div>
+          
+          {/* Build Products */}
+          <div
+            style={{
+              padding: "10px 12px",
+              borderRadius: "6px",
+              fontSize: "13px",
+              color: "#d1d5db",
+              cursor: "pointer",
+              background: "#1f2937",
+              transition: "background 0.2s",
+              marginBottom: "8px",
+            }}
+            onMouseEnter={(e) => (e.target.style.background = "#374151")}
+            onMouseLeave={(e) => (e.target.style.background = "#1f2937")}
+          >
+            📦 Build Products
+          </div>
+          
+          {/* Edit Theme */}
+          <div
+            style={{
+              padding: "10px 12px",
+              borderRadius: "6px",
+              fontSize: "13px",
+              color: "#d1d5db",
+              cursor: "pointer",
+              background: "#1f2937",
+              transition: "background 0.2s",
+              marginBottom: "8px",
+            }}
+            onMouseEnter={(e) => (e.target.style.background = "#374151")}
+            onMouseLeave={(e) => (e.target.style.background = "#1f2937")}
+          >
+            🎨 Edit Theme
+          </div>
+          
+          {/* Audit Store */}
+          <div
+            style={{
+              padding: "10px 12px",
+              borderRadius: "6px",
+              fontSize: "13px",
+              color: "#d1d5db",
+              cursor: "pointer",
+              background: "#1f2937",
+              transition: "background 0.2s",
+              marginBottom: "8px",
+            }}
+            onMouseEnter={(e) => (e.target.style.background = "#374151")}
+            onMouseLeave={(e) => (e.target.style.background = "#1f2937")}
+          >
+            🔍 Audit Store
+          </div>
+          
+          {/* View Analytics */}
+          <div
+            style={{
+              padding: "10px 12px",
+              borderRadius: "6px",
+              fontSize: "13px",
+              color: "#d1d5db",
+              cursor: "pointer",
+              background: "#1f2937",
+              transition: "background 0.2s",
+              marginBottom: "8px",
+            }}
+            onMouseEnter={(e) => (e.target.style.background = "#374151")}
+            onMouseLeave={(e) => (e.target.style.background = "#1f2937")}
+          >
+            📊 View Analytics
+          </div>
+          
+          {/* History & Safety */}
+          <div
+            style={{
+              padding: "10px 12px",
+              borderRadius: "6px",
+              fontSize: "13px",
+              color: "#d1d5db",
+              cursor: "pointer",
+              background: "#1f2937",
+              transition: "background 0.2s",
+            }}
+            onMouseEnter={(e) => (e.target.style.background = "#374151")}
+            onMouseLeave={(e) => (e.target.style.background = "#1f2937")}
+          >
+            ⏮️ History & Safety
+          </div>
+        </div>
+
+        {/* Spacer */}
         <div style={{ flex: 1 }} />
 
-        {/* TODAY Section */}
-        <div style={{ marginBottom: "20px" }}>
-          <div
-            style={{
-              fontSize: "11px",
-              fontWeight: "600",
-              color: "#6b7280",
-              textTransform: "uppercase",
-              letterSpacing: "0.5px",
-              marginBottom: "12px",
-              paddingLeft: "4px",
-            }}
-          >
-            TODAY
-          </div>
-          <div
-            style={{
-              padding: "10px 12px",
-              borderRadius: "6px",
-              fontSize: "13px",
-              color: "#d1d5db",
-              cursor: "pointer",
-              background: "#1f2937",
-              transition: "background 0.2s",
-            }}
-            onMouseEnter={(e) => (e.target.style.background = "#374151")}
-            onMouseLeave={(e) => (e.target.style.background = "#1f2937")}
-          >
-            🔍 Store Audit - Jan 10
-          </div>
-        </div>
-
-        {/* PREVIOUS Section */}
-        <div style={{ marginBottom: "24px" }}>
-          <div
-            style={{
-              fontSize: "11px",
-              fontWeight: "600",
-              color: "#6b7280",
-              textTransform: "uppercase",
-              letterSpacing: "0.5px",
-              marginBottom: "12px",
-              paddingLeft: "4px",
-            }}
-          >
-            PREVIOUS
-          </div>
-          <div
-            style={{
-              padding: "10px 12px",
-              borderRadius: "6px",
-              fontSize: "13px",
-              color: "#d1d5db",
-              cursor: "pointer",
-              background: "#1f2937",
-              transition: "background 0.2s",
-            }}
-            onMouseEnter={(e) => (e.target.style.background = "#374151")}
-            onMouseLeave={(e) => (e.target.style.background = "#1f2937")}
-          >
-            🔍 Store Audit - Jan 10
-          </div>
-        </div>
-
         {/* Footer - Settings & Help */}
-        <div style={{ paddingTop: "16px", borderTop: "1px solid #374151", marginTop: "auto" }}>
+        <div style={{ paddingTop: "16px", borderTop: "1px solid #374151" }}>
           <div
             style={{
               padding: "10px 12px",
