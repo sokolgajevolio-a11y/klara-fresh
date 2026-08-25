@@ -42,20 +42,22 @@ export function recommendTickets({ draws, tournament, robustness, count = 5, see
   const ensembleEvidence = evidence.find(x => x.name === "ensemble");
   const ensembleQualified = robust && Boolean(ensembleEvidence?.consistentlyPositive);
 
-  const selectedName = ensembleQualified ? "ensemble" : "random";
-  const selectedStrategy = ensembleQualified ? STRATEGIES.ensemble : randomStrategy;
-  const rng = mulberry32(seed);
-  const tickets = selectedStrategy({ history: draws, count, rng });
+  const primaryStrategy = ensembleQualified ? STRATEGIES.ensemble : randomStrategy;
+  const primaryTickets = primaryStrategy({ history: draws, count, rng: mulberry32(seed) });
+  const researchTickets = ensembleQualified
+    ? []
+    : STRATEGIES.ensemble({ history: draws, count, rng: mulberry32(seed + 99173) });
 
   return {
-    selectedStrategy: selectedName,
+    selectedStrategy: ensembleQualified ? "ensemble" : "random",
     evidenceStatus: ensembleQualified ? "robust-candidate-edge" : "no-robust-demonstrated-edge",
     explanation: ensembleQualified
       ? "The ensemble passed the current robustness gate and has consistently positive tested intervals. It remains experimental and does not change the underlying randomness of a valid Powerball draw."
-      : "No model currently passes the full robustness gate. Primary candidate tickets therefore use the random baseline; model-based tickets remain research-only.",
+      : "No model currently passes the full robustness gate. Primary candidate tickets therefore use the random baseline; the ensemble selections below are shown separately for research comparison only.",
     researchOnlyStrategy: ensembleQualified ? null : "ensemble",
     robustnessRequired: true,
     evidence,
-    tickets,
+    tickets: primaryTickets,
+    researchTickets,
   };
 }
