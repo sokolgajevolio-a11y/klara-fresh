@@ -6,6 +6,7 @@ import {
   structureFilteredRandomStrategy,
   antiCrowdStrategy,
 } from "./strategies";
+import { createEnsembleStrategy } from "./lab";
 
 function seeded(strategy, seed) {
   return (args) => strategy({ ...args, rng: mulberry32(seed + (args.targetIndex || 0)) });
@@ -16,11 +17,13 @@ export async function runLiveTournament(draws) {
   return windows.map((warmup, index) => {
     const seedBase = 10000 + index * 1000;
     const baseline = seeded(randomStrategy, seedBase);
+    const ensemble = createEnsembleStrategy();
     const strategies = {
       frequencyWeighted: seeded(frequencyWeightedStrategy, seedBase + 101),
       recencyBalanced: seeded(recencyBalancedStrategy, seedBase + 202),
       structureFiltered: seeded(structureFilteredRandomStrategy, seedBase + 303),
       antiCrowd: seeded(antiCrowdStrategy, seedBase + 404),
+      ensemble: seeded(ensemble, seedBase + 505),
     };
 
     const tournament = runTournament({
