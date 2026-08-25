@@ -5,13 +5,15 @@ import {
   recencyBalancedStrategy,
   structureFilteredRandomStrategy,
 } from "./strategies";
+import { createEnsembleStrategy } from "./lab";
 import { mulberry32 } from "./experiment";
 
 const STRATEGIES = {
-  frequency: frequencyWeightedStrategy,
-  recency: recencyBalancedStrategy,
-  structure: structureFilteredRandomStrategy,
+  frequencyWeighted: frequencyWeightedStrategy,
+  recencyBalanced: recencyBalancedStrategy,
+  structureFiltered: structureFilteredRandomStrategy,
   antiCrowd: antiCrowdStrategy,
+  ensemble: createEnsembleStrategy(),
 };
 
 function aggregateEvidence(tournament) {
@@ -34,20 +36,25 @@ function aggregateEvidence(tournament) {
   })).sort((a, b) => b.meanAdvantage - a.meanAdvantage);
 }
 
-export function recommendTickets({ draws, tournament, count = 5, seed = 20260825 }) {
+export function recommendTickets({ draws, tournament, robustness, count = 5, seed = 20260825 }) {
   const evidence = aggregateEvidence(tournament);
-  const winner = evidence.find(x => x.consistentlyPositive);
-  // If no candidate demonstrates a stable positive interval, do not pretend it has predictive evidence.
-  const selectedName = winner?.name || "random";
-  const selectedStrategy = STRATEGIES[selectedName] || randomStrategy;
+  const robust = Boolean(robustness?.robustCandidate);
+  const ensembleEvidence = evidence.find(x => x.name === "ensemble");
+  const ensembleQualified = robust && Boolean(ensembleEvidence?.consistentlyPositive);
+
+  const selectedName = ensembleQualified ? "ensemble" : "random";
+  const selectedStrategy = ensembleQualified ? STRATEGIES.ensemble : randomStrategy;
   const rng = mulberry32(seed);
   const tickets = selectedStrategy({ history: draws, count, rng });
+
   return {
     selectedStrategy: selectedName,
-    evidenceStatus: winner ? "candidate-edge" : "no-demonstrated-edge",
-    explanation: winner
-      ? `${selectedName} is the strongest current candidate across tested windows, but this remains experimental rather than predictive proof.`
-      : "No tested strategy currently demonstrates a stable advantage over random selection. Candidate tickets therefore use the random baseline rather than overstating an edge.",
+    evidenceStatus: ensembleQualified ? "robust-candidate-edge" : "no-robust-demonstrated-edge",
+    explanation: ensembleQualified
+      ? "The ensemble passed the current robustness gate and has consistently positive tested intervals. It remains experimental and does not change the underlying randomness of a valid Powerball draw."
+      : "No model currently passes the full robustness gate. Primary candidate tickets therefore use the random baseline; model-based tickets remain research-only.",
+    researchOnlyStrategy: ensembleQualified ? null : "ensemble",
+    robustnessRequired: true,
     evidence,
     tickets,
   };
