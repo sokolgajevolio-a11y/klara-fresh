@@ -87,3 +87,22 @@ model FixHistory {
   @@index([issueId])
   @@index([shop, createdAt])
 }
+
+model PowerballPrediction {
+  id                  String   @id @default(cuid())
+  shop                String
+  targetDrawDate      String
+  generatedAt         DateTime @default(now())
+  latestKnownDrawDate String?
+  selectedStrategy    String
+  evidenceStatus      String
+  snapshotJson        String
+  settled             Boolean  @default(false)
+  settledAt           DateTime?
+  resultJson          String?
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  @@unique([shop, targetDrawDate])
+  @@index([shop, settled, targetDrawDate])
+}
