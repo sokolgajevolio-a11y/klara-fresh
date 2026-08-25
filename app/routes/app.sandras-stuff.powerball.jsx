@@ -24,11 +24,12 @@ export async function loader({ request }) {
   assertSandraAccess(session);
   const draws = await fetchPowerballDataset();
   const tournament = await runLiveTournament(draws);
-  const recommendation = recommendTickets({ draws, tournament, count: 5 });
   const holdouts = rollingHoldoutValidation({ draws });
   const sensitivity = weightSensitivityValidation({ draws });
   const robustness = summarizeRobustness({ holdouts, sensitivity });
   const verdict = verdictFromSummary(robustness);
+  const recommendation = recommendTickets({ draws, tournament, robustness, count: 5 });
+
   return Response.json({
     drawCount: draws.length,
     firstDraw: draws[0]?.date || null,
@@ -89,11 +90,11 @@ export default function PowerballResearchPage() {
       </section>
 
       <section style={{ marginTop: 28, padding: 20, border: "1px solid #ddd", borderRadius: 12 }}>
-        <h2>Best Current Evidence</h2>
-        <p><strong>Status:</strong> {r.evidenceStatus === "candidate-edge" ? "Experimental candidate edge" : "No demonstrated edge over random"}</p>
+        <h2>Primary Candidate Tickets</h2>
+        <p><strong>Status:</strong> {r.evidenceStatus === "robust-candidate-edge" ? "Robust experimental candidate" : "No robust demonstrated edge"}</p>
         <p><strong>Selected method:</strong> {r.selectedStrategy}</p>
         <p>{r.explanation}</p>
-        <h3>Candidate tickets</h3>
+        {r.researchOnlyStrategy && <p><strong>Research-only model:</strong> {r.researchOnlyStrategy}</p>}
         <ol>{r.tickets.map((ticket, i) => <li key={i}><strong>{ticket.white.join(" · ")}</strong> &nbsp; Powerball <strong>{ticket.powerball}</strong></li>)}</ol>
       </section>
 
